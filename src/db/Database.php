@@ -2,12 +2,10 @@
 
 function dbConnect() {
     return mysqli_connect("localhost", "root", "", "netit_backend_hr");
-};
-
-// SELECT * FROM tb_job_post
+}
 
 function query($query) { 
-    // Connet to database
+                                       // Connet to database
     $connection = mysqli_connect("localhost", "root", "", "netit_backend_hr");
 
     if(!$connection) {
@@ -23,3 +21,12 @@ function query($query) {
     }
     return $databaseResult;
 }
+
+function getLastInsertedId() {
+
+    return mysqli_insert_id(dbConnect());
+}
+
+
+    
+
