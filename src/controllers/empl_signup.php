@@ -3,16 +3,14 @@
 function isEmployAlreadyExists($columnName) {
 
    $userName = $columnName['user_name'];
-    $userEmail = $columnName['user_email'];
+   $userEmail = $columnName['user_email'];
     
-    $validateIfRegistartionEmployAlreadyExistQuery = "SELECT * "
-                                                 . "FROM tb_user_employ"
-                                                 . "WHERE user_name = '$userName' OR email = '$userEmail'";
+    $validateIfRegistartionEmployAlreadyExistQuery = "SELECT * FROM tb_employ WHERE user_name = '$userName' OR email = '$userEmail' ";
     $databaseQueryResult = query($validateIfRegistartionEmployAlreadyExistQuery);
     $requestResult       = mysqli_fetch_assoc($databaseQueryResult);
 
     return ($requestResult != null);
-};
+}
 
 function createNewEmployInDatabase($databaseColumn) {
     $userName = $databaseColumn['user_name'];
@@ -107,9 +105,7 @@ function isEmployerAlreadyExists($columnName1) {
 
    $companyName = $columnName1['company_name'];
     
-    $validateIfRegistartionEmployerAlreadyExistQuery = "SELECT * "
-                                                 . "FROM tb_user_employ"
-                                                 . "WHERE user_name = '$companyName'";
+    $validateIfRegistartionEmployerAlreadyExistQuery = "SELECT * FROM tb_employ WHERE company_name = '$companyName'";
     $databaseQueryResult = query($validateIfRegistartionEmployerAlreadyExistQuery);
     $requestResult       = mysqli_fetch_assoc($databaseQueryResult);
 
@@ -172,9 +168,9 @@ if(isset($_POST['empl_request_tokken2']) AND $_POST['empl_request_tokken2'] == 2
     ));
     
      if($isEmployerCreated){
-          $isRoleAssignedSuccessfuly1 = assigneRoleToEmploy(getLastInsertedId(), 1);
+         $isRoleAssignedSuccessfuly1 = assigneRoleToEmployer(getLastInsertedId(), 1);
           if($isRoleAssignedSuccessfuly1) {
-              echo "Поздравления! Регистрирахте се успешно.";
+             echo "Поздравления! Регистрирахте се успешно.";
           }
-     }          
+    }          
 }
