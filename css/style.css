@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.input {
+   display         : block; 
+    width           : 70%;
+    border: #37591e solid 1px;
+    border-radius: 5px;
+    margin-bottom   : 10px;
+    padding         : 5px;
+}
+
+.submit {
+    width           : 70%;
+    background      : #b8e1a0;
+    text-transform  : uppercase;
+    border: #32004a solid 1px;
+    border-radius: 5px;
+    padding         : 5px 0;
+    font-weight     : bold;
+    color:  #37591e;  
+}
+
+
+
+#signup--wrapper {
+    
+     margin          : auto;
+    width           : 500px;    
+}
+
+#signup--wrapper1 {
+   
+     margin          : auto;
+    width           : 500px;
+     
+}
+
+.db-error {
+    font-weight: bold;
+    border: solid 2px #000;
+    background: #e54d2;
+    text-transform: uppercase;
+    padding: 5px;
+}
+
+
+
+
+.form-error {
+    font-weight : bold;
+    color       : #ff0000;
+}
+
+
+.list-item {
+    background  : #b8e1a0;
+    display     : inline-block;
+    color       : #32004a;
+    height: 20px;
+    margin-bottom: 10px;
+    border: #32004a solid 1px;
+}
+
+
+.list-item a {
+    color: #32004a;
+    padding: 10px;
+    text-decoration: none;
+    
+}
+
+.logo {
+    margin: auto;
+    color: #37591e;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#cms-manager {
+    display: flex;
+    margin-right: 15px;
+}
+
+
+.btn {
+    background: #d37Aff;
+    width: 100px;
+    border: #32004a solid 1px;
+    border-radius: 5px;
+    display: inline-block;
+    color: #32004a;    
+    padding: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+
+.form_title {
+    text-align: left;
+    width           : 70%;
+    color: #37591e;
+    font-weight: bold;
+    
+};
+
+
+.buttche {
+     background      : #d37Aff;
+      border: #32004a solid 1px;
+}
+
+.option{
+   background      : #d37Aff;
+      border: #32004a solid 1px; 
+}
+
+.textarea7{
+    border: #37591e solid 1px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    width: 70%;
+}
+
+#header {
+    background: #e7ffd9;
+}
+
+#footer {
+   margin-top: 30px;
+}
+.footer-tx {
+    font-size: small;
+    
+    margin-top: 30px;
+}
+
+.center {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

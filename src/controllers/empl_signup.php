@@ -1,41 +1,6 @@
 <?php
 
-function isEmployAlreadyExists($columnName) {
-
-   $userName = $columnName['user_name'];
-   $userEmail = $columnName['user_email'];
-    
-    $validateIfRegistartionEmployAlreadyExistQuery = "SELECT * FROM tb_employ WHERE user_name = '$userName' OR email = '$userEmail' ";
-    $databaseQueryResult = query($validateIfRegistartionEmployAlreadyExistQuery);
-    $requestResult       = mysqli_fetch_assoc($databaseQueryResult);
-
-    return ($requestResult != null);
-}
-
-function createNewEmployInDatabase($databaseColumn) {
-    $userName = $databaseColumn['user_name'];
-    $userFName = $databaseColumn['user_fname'];
-    $userLName = $databaseColumn['user_lname'];
-    $userEmail = $databaseColumn['user_email'];
-    $userPhone = $databaseColumn['user_phone'];
-    $userAge = $databaseColumn['user_age'];
-    $userPass = $databaseColumn['user_pass'];
-    
-    $createNewEmployRequest = "INSERT INTO tb_employ(user_name, fname, lname, email, tel, age, pass) "
-            . "VALUES('$userName', '$userFName', '$userLName', '$userEmail', '$userPhone', '$userAge', '$userPass')";
-    
-    return query($createNewEmployRequest);
-}
-
-//UPDATE
-function assigneRoleToEmploy($employId, $roleId) {
-
-    $assigneRoleToInsertedEmployQuery = "INSERT INTO tb_employ__role(empl_id, role_id) "
-                                    . "VALUES($employId, $roleId)";    
-
-    return query($assigneRoleToInsertedEmployQuery);
-}
-
+//employ
 if(isset($_POST['empl_request_tokken1']) AND $_POST['empl_request_tokken1'] == 1) {
     $userName = isset($_POST['user_name']) ? $_POST['user_name'] : '';
     $userFName = isset($_POST['user_fname']) ? $_POST['user_fname'] : '';
@@ -46,7 +11,6 @@ if(isset($_POST['empl_request_tokken1']) AND $_POST['empl_request_tokken1'] == 1
     $userPass = isset($_POST['user_pass']) ? $_POST['user_pass'] : '';
     $userPassRepeat     = isset($_POST['user_pass_repeat']) ? $_POST['user_pass_repeat'    ] : '';
     
-
     
     if(strlen($userName) < 3) {
        return setFormError('empl_signup', 'user_name', 'Потребителското име трябва да съдържа минимум 3 символа');
@@ -54,7 +18,7 @@ if(isset($_POST['empl_request_tokken1']) AND $_POST['empl_request_tokken1'] == 1
     
     if(strlen($userFName) < 3) {
         return setFormError('empl_signup', 'user_fname', 'Собственото име трябва да съдържа минимум 3 символа');
-    };
+    }
     
     if(strlen($userLName) < 3) {
         return setFormError('empl_signup', 'user_lname', 'Фамилията трябва да съдържа минимум 3 символа');
@@ -76,11 +40,11 @@ if(isset($_POST['empl_request_tokken1']) AND $_POST['empl_request_tokken1'] == 1
         return setFormError('empl_signup', 'user_pass', 'Паролата и потвърдената парола трябва да съвпадат');
     }
         
-    if(isEmployAlreadyExists(array('user_name' => $userName, 'user_email' => $userEmail))) {
+    if(Auth::isEmployAlreadyExists(array('user_name' => $userName, 'user_email' => $userEmail))) {
         return setFormError('empl_signup', 'user_name', 'Този потребител вече съществува');
     }
     
-    $isEmployCreated = createNewEmployInDatabase(array(
+    $isEmployCreated = Auth::createNewEmployInDatabase(array(
         'user_name' => $userName,
         'user_fname' => $userFName,
         'user_lname' => $userLName,
@@ -91,7 +55,7 @@ if(isset($_POST['empl_request_tokken1']) AND $_POST['empl_request_tokken1'] == 1
     ));
     
      if($isEmployCreated){
-          $isRoleAssignedSuccessfuly = assigneRoleToEmploy(getLastInsertedId(), 1);
+          $isRoleAssignedSuccessfuly = Auth::assigneRoleToEmploy(Database::getLastInsertedId(), 3);
           if($isRoleAssignedSuccessfuly) {
               echo "Поздравления! Регистрирахте се успешно.";
           }
@@ -99,40 +63,7 @@ if(isset($_POST['empl_request_tokken1']) AND $_POST['empl_request_tokken1'] == 1
 }
 
 
-
-
-function isEmployerAlreadyExists($columnName1) {
-
-   $companyName = $columnName1['company_name'];
-    
-    $validateIfRegistartionEmployerAlreadyExistQuery = "SELECT * FROM tb_employ WHERE company_name = '$companyName'";
-    $databaseQueryResult = query($validateIfRegistartionEmployerAlreadyExistQuery);
-    $requestResult       = mysqli_fetch_assoc($databaseQueryResult);
-
-    return ($requestResult != null);
-}
-
-function createNewEmployerInDatabase($databaseColumn1) {
-    $companyName = $databaseColumn1['company_name'];
-    $userBranch = $databaseColumn1['user_branch'];
-    $businessActivity = $databaseColumn1['business_activity'];
-    $employerPass = $databaseColumn1['employer_pass'];
-    
-    $createNewEmployerRequest = "INSERT INTO tb_employ(company_name, branch, business_activity, employer_pass) "
-            . "VALUES('$companyName', '$userBranch', '$businessActivity', '$employerPass')";
-    
-    return query($createNewEmployerRequest);
-}
-
-//UPDATE
-function assigneRoleToEmployer($employId, $roleId) {
-
-    $assigneRoleToInsertedEmployerQuery = "INSERT INTO tb_employ__role(empl_id, role_id) "
-                                    . "VALUES($employId, $roleId)";    
-
-    return query($assigneRoleToInsertedEmployerQuery);
-}
-
+//company
 if(isset($_POST['empl_request_tokken2']) AND $_POST['empl_request_tokken2'] == 2) {
     $companyName = isset($_POST['company_name']) ? $_POST['company_name'] : '';
     $userBranch = isset($_POST['user_branch']) ? $_POST['user_branch'] : '';
@@ -156,11 +87,11 @@ if(isset($_POST['empl_request_tokken2']) AND $_POST['empl_request_tokken2'] == 2
         return setFormError('empl_signup', 'employer_pass', 'Паролата и потвърдената парола трябва да съвпадат');
     }
     
-    if(isEmployerAlreadyExists(array('company_name' => $companyName))) {
+    if(Auth::isEmployerAlreadyExists(array('company_name' => $companyName))) {
         return setFormError('empl_signup', 'company_name', 'Този потребител вече съществува');
     }
     
-    $isEmployerCreated = createNewEmployerInDatabase(array(
+    $isEmployerCreated = Auth::createNewEmployerInDatabase(array(
         'company_name' => $companyName,
         'user_branch' => $userBranch,
         'business_activity' => $businessActivity,
@@ -168,9 +99,10 @@ if(isset($_POST['empl_request_tokken2']) AND $_POST['empl_request_tokken2'] == 2
     ));
     
      if($isEmployerCreated){
-         $isRoleAssignedSuccessfuly1 = assigneRoleToEmployer(getLastInsertedId(), 1);
+         $isRoleAssignedSuccessfuly1 = Auth::assigneRoleToEmployer(Database::getLastInsertedId(), 3);
           if($isRoleAssignedSuccessfuly1) {
              echo "Поздравления! Регистрирахте се успешно.";
           }
     }          
-}
+ }
+
