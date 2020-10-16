@@ -17,8 +17,6 @@ function returnFormError($group, $key) {
     
     if(isset($_SESSION[$group][$key])) {
         return  $_SESSION[$group][$key];
-    };
-    
-    
-    
-};
+    }   
+}
+

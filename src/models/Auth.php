@@ -90,5 +90,77 @@ Class Auth {
                return Auth::assigneRoleToEmployer(Database::getLastInsertedId(), 3);
            }
        }
+       
+       //employ/setAutenticationFlagToAvailable() - Проверка дали потребителя се е логнал
+       static function setAutenticatedUsers($authenticatedCollectionData) {
+           
+           $_SESSION['users_data_collection']   = $authenticatedCollectionData['users_data_collection'];
+           $_SESSION['users_role_collection']   = $authenticatedCollectionData['users_role_collection'];
+           $_SESSION['is_authenticated'] = true;
+           
+          
+       }
+       
+       static function isAutenticated() {
+         
+           
+    return isset($_SESSION['is_authenticated']) ? $_SESSION['is_authenticated'] : false; 
+        
+       }
+
+     
+       static function isNotAutenticated() {
+           return !Auth::isAutenticated();
+       }
+       
+       static function isHR(){
+           return Auth::isAutenticated() &&
+           Auth::hasRole('HR');
+       }
+       
+       static function isSuper() {
+           return Auth::isAutenticated() &&
+           Auth::hasRole('SUPER');
+       }
+       
+       static function isEmployer() {
+           return Auth::isAutenticated() &&
+           Auth::hasRole('EMPLOYER');
+       }
+       
+       static function isEmploy() {
+           return Auth::isAutenticated() &&
+           Auth::hasRole('EMPLOY');
+       }
+       
+       
+       static function signout() {
+           session_destroy();
+       }
+       
+     private static function hasRole($roleTitle) {
+        
+        foreach ($_SESSION['users_role_collection'] as $key => $value) {
+            
+            if($value['role_title'] == $roleTitle) return true;
+        }
+        return false;
+     }
+     
+    static function listAllEmploy() {
+    
+    if(isset($_POST['empl_request_tokken1']) AND $_POST['empl_request_tokken1'] == 1){
+        //var_dump($_GET);
+    $userName = isset($_POST['user_name']) ? $_POST['user_name'] : '';
+   
+    }
+    return Database::query("SELECT * FROM tb_employ");
+  }
+
+
+static function visibleEmploy(){
+    
 }
+}
+
 

@@ -1,9 +1,9 @@
 <?php session_start(); ?>
 <?php include './src/db/Database.php';      ?>
+
 <?php include './src/models/Auth.php';      ?>
 <?php include './src/util/form.php';        ?>
-<?php include './src/util/Pagination.php';        ?>
-<?php include './src/util/redirect.php';    ?>
+<?php include './src/util/redirect.php';        ?>
 
 
 <html>
@@ -24,17 +24,24 @@
         <?php } ?>
        
         <?php if(Auth::isAutenticated()) { ?>
- 
-        
+           
               
         <ul>
                <li class="list-item-1"><a href="signout.php">Изход</a></li>
             </ul>
         <?php } ?>
         
+               
+        
+        <?php if(Auth::isSuper()) { ?>        
+        <ul>
+            <li class="list-item-1"><a href="super_category.php">Администрация на категориите</a></li>
+        </ul>
+        <?php } ?>   
+        
         </div>
        
-    <h1 class   = "logo">Агенция за подбор на чудовищен персонал</h1>
+    <h1 class   = "logo">Агенция за подбор на чудовищен персонал. Панел-SUPER</h1>
     
     <div >
         <ul>
@@ -47,8 +54,5 @@
         </ul>
     </div>
     
-    <a href="index.php">
-    <img src='./images/monster.png' alt="monster" width="1000" height="400" class="center">
-    </a>
+    
 </div>
-   

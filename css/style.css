@@ -18,7 +18,7 @@
     width           : 70%;
     background      : #b8e1a0;
     text-transform  : uppercase;
-    border: #32004a solid 1px;
+    border: #37591e solid 1px;
     border-radius: 5px;
     padding         : 5px 0;
     font-weight     : bold;
@@ -52,6 +52,7 @@
 
 
 .form-error {
+    
     font-weight : bold;
     color       : #ff0000;
 }
@@ -60,24 +61,60 @@
 .list-item {
     background  : #b8e1a0;
     display     : inline-block;
-    color       : #32004a;
+    color       : #37591e;
+    text-decoration: none;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    border: #37591e solid 1px;
+    border-radius: 5px;
+}
+
+.list-item-1 {
+    background  : #b8e1a0;
+    display     : inline-block;
+    float: right;
+    color       : #37591e;
     height: 20px;
     margin-bottom: 10px;
-    border: #32004a solid 1px;
+    margin-left: 13px;
+    border: #37591e solid 1px;
+    
+}
+
+.sticky {
+    
+    position: sticky;
+    top: 0px;
+    
+    
 }
 
 
 .list-item a {
-    color: #32004a;
+    color: #37591e;
+    padding: 30px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    
+}
+
+.list-item-1 a {
+
+    position: stiky;
+    color: #37591e;
     padding: 10px;
     text-decoration: none;
+    
     
 }
 
 .logo {
     margin: auto;
     color: #37591e;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+   padding-top: 40px;
     text-align: center;
 }
 
@@ -88,15 +125,14 @@
 
 
 .btn {
-    background: #d37Aff;
-    width: 100px;
-    border: #32004a solid 1px;
-    border-radius: 5px;
+    width: 150px;
+    
     display: inline-block;
-    color: #32004a;    
-    padding: 10px;
+    color: #37591e;    
+    padding: 7px;
     margin-bottom: 10px;
     text-decoration: none;
+    cursor          : pointer;
 }
 
 
@@ -107,12 +143,6 @@
     font-weight: bold;
     
 };
-
-
-.buttche {
-     background      : #d37Aff;
-      border: #32004a solid 1px;
-}
 
 .option{
    background      : #d37Aff;
@@ -128,15 +158,19 @@
 
 #header {
     background: #e7ffd9;
+ 
 }
 
 #footer {
    margin-top: 30px;
+   background: #e7ffd9;
+   
 }
 .footer-tx {
     font-size: small;
-    
     margin-top: 30px;
+    
+    text-align: center;
 }
 
 .center {
@@ -144,3 +178,117 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.wrapper {
+    width           : 500px;
+    margin          : auto;
+    margin-bottom   : 8px;
+}
+
+.category-placeholder--category {
+    display         : block;
+    width: 400px;
+    font-size       : 15px;
+    background: #E7FFD9;
+    color: #37591e;
+    text-decoration: none;
+    border          : solid #37591e 1px;
+    border-radius: 6px;
+    padding         : 6px;
+    font-weight     : bold;
+    margin-right    : 10px;
+    
+    margin: 10px;    
+    cursor          : pointer;
+    
+}
+
+.category-placeholder--category a{
+    text-decoration: none;
+    color: #37591e;
+}
+
+.flex {
+    display: flex;
+    width: auto;
+    height: auto;
+   
+    flex-direction: row;
+    justify-content: center;
+}
+.flex .wrapper{
+    width: 100%;
+    margin: 30px;
+    
+}
+
+.job-title {
+    font-size: 22px;
+    color: #37591E;
+}
+
+.job-company {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.priview_content {
+    font-size: 15px;
+    font-style: italic;
+}
+
+.search {    
+    border: #37591E solid 1px;
+    border-radius: 5px;
+    padding         : 5px 0;
+    font-weight     : bold;
+    color:  #37591e;
+}
+
+.submit-1 {
+     width           : 100px;
+    background      : #E7FFD9;
+    text-transform  : uppercase;
+    border: #37591E solid 1px;
+    border-radius: 5px;
+    padding         : 5px 0;
+    font-weight     : bold;
+    color:  #37591e;
+    cursor          : pointer;
+}
+.cat {
+    color: #37591e;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.redirect {
+    margin: auto;
+    color: #37591e;
+    margin-bottom: 30px;
+   padding-top: 40px;
+    text-align: center;
+}
+
+.categoryyy {
+    color: #37591e;
+    font-size: 18px;
+}
+.pagination {
+    display: inline-block;
+    padding: 5px;
+    text-transform: lowercase;
+    background: #e7FFD9;
+    border: solid #37591E 1px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #37591E;
+    margin: 5px;
+}
+.pagination:hover {
+    background: #37591E;
+    color: #e7FFD9;
+    border: solid #e7FFD9 1px;
+}
+
