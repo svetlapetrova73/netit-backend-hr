@@ -1,9 +1,9 @@
 <?php session_start(); ?>
 <?php include './src/db/Database.php';      ?>
-
 <?php include './src/models/Auth.php';      ?>
 <?php include './src/util/form.php';        ?>
 <?php include './src/util/redirect.php';        ?>
+<?php include './src/util/Pagination.php';        ?>
 
 
 <html>
@@ -36,6 +36,7 @@
         <?php if(Auth::isSuper()) { ?>        
         <ul>
             <li class="list-item-1"><a href="super_category.php">Администрация на категориите</a></li>
+            <li class="list-item-1"><a href="super_job_postings.php">Администрация на обявите за работа</a></li>
         </ul>
         <?php } ?>   
         

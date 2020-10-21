@@ -55,7 +55,7 @@ if(isset($_POST['empl_request_tokken1']) AND $_POST['empl_request_tokken1'] == 1
     ));
     
      if($isEmployCreated){
-          $isRoleAssignedSuccessfuly = Auth::assigneRoleToEmploy(Database::getLastInsertedId(), 3);
+          $isRoleAssignedSuccessfuly = Auth::assigneRoleToEmpl(Database::getLastInsertedId(), 4);
           if($isRoleAssignedSuccessfuly) {
               echo "Поздравления! Регистрирахте се успешно.";
           }
@@ -65,30 +65,30 @@ if(isset($_POST['empl_request_tokken1']) AND $_POST['empl_request_tokken1'] == 1
 
 //company
 if(isset($_POST['empl_request_tokken2']) AND $_POST['empl_request_tokken2'] == 2) {
-    $companyName = isset($_POST['company_name']) ? $_POST['company_name'] : '';
-    $userBranch = isset($_POST['user_branch']) ? $_POST['user_branch'] : '';
-    $businessActivity = isset($_POST['business_activity']) ? $_POST['business_activity'] : '';
-    $employerPass = isset($_POST['employer_pass']) ? $_POST['employer_pass'] : '';
+    $companyName = isset($_POST['company7_name']) ? $_POST['company7_name'] : '';
+    $userBranch = isset($_POST['user7_branch']) ? $_POST['user7_branch'] : '';
+    $businessActivity = isset($_POST['business7_activity']) ? $_POST['business7_activity'] : '';
+    $employerPass = isset($_POST['employer7_pass']) ? $_POST['employer7_pass'] : '';
     $EmployerPassRepeat = isset($_POST['employer_pass_repeat']) ? $_POST['employer_pass_repeat'] : '';
     
     if(strlen($companyName) < 3) {
-        return setFormError('empl_signup', 'company_name', 'Името на фирмата трябва да съдържа минимум 3 символа');
+        return setFormError('empl_signup', 'company7_name', 'Името на фирмата трябва да съдържа минимум 3 символа');
     }
     
     if(strlen($userBranch) < 3) {
-        return setFormError('empl_signup', 'user_branch', 'Браншът трябва да съдържа минимум 3 символа');
+        return setFormError('empl_signup', 'user7_branch', 'Браншът трябва да съдържа минимум 3 символа');
     }
     
     if(strlen($businessActivity) < 10) {
-        return setFormError('empl_signup', 'business_activity', 'Описанието трябва да съдържа минимум 10 символа');
+        return setFormError('empl_signup', 'business7_activity', 'Описанието трябва да съдържа минимум 10 символа');
     }
     
     if($employerPass != $EmployerPassRepeat){
-        return setFormError('empl_signup', 'employer_pass', 'Паролата и потвърдената парола трябва да съвпадат');
+        return setFormError('empl_signup', 'employer7_pass', 'Паролата и потвърдената парола трябва да съвпадат');
     }
     
-    if(Auth::isEmployerAlreadyExists(array('company_name' => $companyName))) {
-        return setFormError('empl_signup', 'company_name', 'Този потребител вече съществува');
+    if(Auth::isEmployerAlreadyExists(array('company7_name' => $companyName))) {
+        return setFormError('empl_signup', 'company7_name', 'Този потребител вече съществува');
     }
     
     $isEmployerCreated = Auth::createNewEmployerInDatabase(array(
@@ -99,7 +99,7 @@ if(isset($_POST['empl_request_tokken2']) AND $_POST['empl_request_tokken2'] == 2
     ));
     
      if($isEmployerCreated){
-         $isRoleAssignedSuccessfuly1 = Auth::assigneRoleToEmployer(Database::getLastInsertedId(), 3);
+         $isRoleAssignedSuccessfuly1 = Auth::assigneRoleToEmpl(Database::getLastInsertedId(), 3);
           if($isRoleAssignedSuccessfuly1) {
              echo "Поздравления! Регистрирахте се успешно.";
           }

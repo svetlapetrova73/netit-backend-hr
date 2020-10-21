@@ -13,6 +13,7 @@
                 name = "job_title">
             
             <label>Изберете категория</label>
+            <br>
                     <?php getCategoryStaticList('job_category'); ?>
             
             <input 

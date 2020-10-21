@@ -1,24 +1,76 @@
 <?php
 
 class Pagination {
+    
+    private static $pageLimit = 4;
+    private static $totalCount = 0;
+
+    static function setPageLimit($pageLimit) {
+        Pagination::$pageLimit = $pageLimit;
+    }
+
     static function getPageLimit() {
-        return 5;  
+        return Pagination::$pageLimit;
     }
     
-    static function getPageOffset() {}
+    static function getPageOffset() {
+        
+        return (Pagination::getPageIndex() - 1) * 
+               (Pagination::getPageLimit());
+    }
     
     static function getPageIndex() {
-         return isset($_GET['page_index']) ? $_GET['page_index'] : 1;
+        return isset($_GET['page_index']) ? $_GET['page_index'] : 1;
+    }
+    
+    static function setTotalCount($count) {
+        Pagination::$totalCount = $count;
+    }
+    
+    static function getTotalCount() {
+        return Pagination::$totalCount;
+    }    
+    
+    static function hasNextPage() {
+        return (Pagination::getPageOffset() + Pagination::getPageLimit()) < Pagination::getTotalCount();
+    }
+    
+    static function hasPrevPage() {
+        return Pagination::getPageIndex() > 1;
     }
     
     static function display() {
-         $pageIndex = Pagination::getPageIndex();
-         $nextPageIndex = $pageIndex + 1;
-         $prevPageIndex = $pageIndex - 1;
-    
-         echo "<a class='pagination' href = '?page_index = $prevPageIndex'>Предишна</a>";
-         echo "<a class='pagination' href = '?page_index = $nextPageIndex'>Следващаt</a>";
+        
+        $pageIndex      = Pagination::getPageIndex();
+        $nextPageIndex  = $pageIndex + 1;
+        $prevPageIndex  = $pageIndex - 1;
+        
+        if(Pagination::hasPrevPage()) {
+            echo "<a class='pagination' href='?page_index=$prevPageIndex'>Предишна</a>";
+        }        
+        
+        echo '<span>' . Pagination::getPageOffset() . ' - ' . Pagination::getTotalCount() . '</span>';
+        
+        if(Pagination::hasNextPage()) {
+            echo "<a class='pagination' href='?page_index=$nextPageIndex'>Следваща</a>";        
+        }
     }
     
+    static function display1() {
+        
+        $pageIndex      = Pagination::getPageIndex();
+        $nextPageIndex  = $pageIndex + 1;
+        $prevPageIndex  = $pageIndex - 1;
+        
+        if(Pagination::hasPrevPage()) {
+            echo "<a class='pagination' href='?page_index=$prevPageIndex'>Предишна</a>";
+        }        
+        echo '<span>' . Pagination::getPageOffset() . ' - ' . Pagination::getTotalCount() . '</span>';
+        
+        if(Pagination::hasNextPage()) {
+            echo "<a class='pagination' href='?page_index=$nextPageIndex'>Следваща</a>";        
+        }
+    }
+    
+    
 }
-

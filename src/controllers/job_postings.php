@@ -43,8 +43,8 @@ function listAllJobPost() {
     
      $pageLimit  = Pagination::getPageLimit();
     $pageOffset = Pagination::getPageOffset();
-    
-    return Database::query("SELECT * FROM tb_job_post LIMIT $pageOffset, $pageLimit");
+    Pagination::setTotalCount(Database::count("tb_job_post"));
+    return Database::getAll("SELECT * FROM tb_job_post LIMIT $pageOffset, $pageLimit");
     
 }
 

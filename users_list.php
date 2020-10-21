@@ -4,11 +4,11 @@
 
 
 <div class="wrapper">
-    <p class="cat">Обяви за работа</p>
+    <p class="cat">Кандидат-служители</p>
     <br>
-    <?php $mysqlResult = listAllEmploy(); //posts
+    <?php $mysqlResult = listAllEmploy(); 
     
-    while($employList = Database::fetch($mysqlResult)) { ?>
+    foreach(listAllEmploy() as $key => $employList) { ?>
 
     
     <div class="priview_content" ><b><?php echo $employList['user_name']; ?></b></div>
@@ -23,11 +23,15 @@
     
     <div class="content"><?php echo $employList['email']; ?></div>
     
-    
-    <br>
-    
+     <br>
+     
     <?php } ?>
+     
+   <?php Pagination::display(); ?> 
+   
 </div>
+
 <br>
 <div class="list-item-1"><a  href="super.php">*</a></div>
+
 <?php include('C:/xampp/htdocs/netit-backend-hr/template/footer.php'); ?>

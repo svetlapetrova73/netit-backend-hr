@@ -125,7 +125,7 @@
 
 
 .btn {
-    width: 150px;
+    width: 250px;
     
     display: inline-block;
     color: #37591e;    
@@ -237,6 +237,11 @@
     font-style: italic;
 }
 
+.content {
+    font-size: 17px;
+    
+}
+
 .search {    
     border: #37591E solid 1px;
     border-radius: 5px;
@@ -260,7 +265,7 @@
     color: #37591e;
     font-style: italic;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 30px;
 }
 
 .redirect {
@@ -290,5 +295,10 @@
     background: #37591E;
     color: #e7FFD9;
     border: solid #e7FFD9 1px;
+}
+
+.tarsi{
+    color: #37591e;
+    font-size: 18px;
 }
 

@@ -17,7 +17,7 @@ Class Auth {
     //company
     static function isEmployerAlreadyExists($columnName1) {
 
-   $companyName = $columnName1['company_name'];
+   $companyName = $columnName1['company7_name'];
     
     $validateIfRegistartionEmployerAlreadyExistQuery = "SELECT * FROM tb_employ WHERE company_name = '$companyName'";
    $requestResult = Database::get($validateIfRegistartionEmployerAlreadyExistQuery);
@@ -27,51 +27,50 @@ Class Auth {
     
     //employ
     static function createNewEmployInDatabase($databaseColumn) {
-    $userName = $databaseColumn['user_name'];
-    $userFName = $databaseColumn['user_fname'];
-    $userLName = $databaseColumn['user_lname'];
-    $userEmail = $databaseColumn['user_email'];
-    $userPhone = $databaseColumn['user_phone'];
-    $userAge = $databaseColumn['user_age'];
-    $userPass = $databaseColumn['user_pass'];
+   
+    return Database::insert('tb_employ', array(
+        'user_name' => $databaseColumn['user_name'],
+        'fname' => $databaseColumn['user_fname'],
+        'lname' => $userLName = $databaseColumn['user_lname'],
+        'tel' => $userPhone = $databaseColumn['user_phone'],
+        'age' => $userAge = $databaseColumn['user_age'],
+        'email' => $userEmail = $databaseColumn['user_email'],
+        'pass' => $userPass = $databaseColumn['user_pass']
+    ));
 
-    $createNewEmployRequest = "INSERT INTO tb_employ(user_name, fname, lname, email, tel, age, pass) "
-            . "VALUES('$userName', '$userFName', '$userLName', '$userEmail', '$userPhone', '$userAge', '$userPass')";
-    
-    return Database::query($createNewEmployRequest);
     }
     
     //company
     static function createNewEmployerInDatabase($databaseColumn1) {
-    $companyName = $databaseColumn1['company_name'];
-    $userBranch = $databaseColumn1['user_branch'];
-    $businessActivity = $databaseColumn1['business_activity'];
-    $employerPass = $databaseColumn1['employer_pass'];
+              return Database::insert('tb_employ', array(
+            'company_name' => $companyName = $databaseColumn1['company_name'],
+            'branch' => $userBranch = $databaseColumn1['user_branch'],
+            'business_activity' => $businessActivity = $databaseColumn1['business_activity'],
+            'employer_pass' => $employerPass = $databaseColumn1['employer_pass']
+        ));
     
-    $createNewEmployerRequest = "INSERT INTO tb_employ(company_name, branch, business_activity, employer_pass) "
-            . "VALUES('$companyName', '$userBranch', '$businessActivity', '$employerPass')";
-    
-    return Database::query($createNewEmployerRequest);
     }
     
     //employ
-    static function assigneRoleToEmploy($employId, $roleId) {
+    static function assigneRoleToEmpl($employId, $roleId) {
+        
+        return Database::insert('tb_employ__role', array(
+            'empl_id' => $employId,
+            'role_id' => $roleId
+        ));    
 
-    $assigneRoleToInsertedEmployQuery = "INSERT INTO tb_employ__role(empl_id, role_id) "
-                                    . "VALUES($employId, $roleId)";    
-
-    return Database::query($assigneRoleToInsertedEmployQuery);
     }
     
     //company
     //UPDATE
-    static function assigneRoleToEmployer($employId, $roleId) {
+   // static function assigneRoleToEmployer($employId, $roleId) { //еднакво е с assigneRoleToEmploy($employId, $roleId)
+       //static function assigneRoleToEmplyer($employerId, $roleId) { 
+       //return Database::insert('tb_employ__role', array(
+          // 'employer_id' => $employerId,
+           // 'role_id' => $roleId
 
-        $assigneRoleToInsertedEmployerQuery = "INSERT INTO tb_employ__role(empl_id, role_id) "
-                                    . "VALUES($employId, $roleId)";    
-
-       return Database::query($assigneRoleToInsertedEmployerQuery);
-       }
+       // ));
+      
        
        //employ(общия метод)
        static function createNewEmploy($databaseColumn) {
@@ -147,20 +146,8 @@ Class Auth {
         return false;
      }
      
-    static function listAllEmploy() {
     
-    if(isset($_POST['empl_request_tokken1']) AND $_POST['empl_request_tokken1'] == 1){
-        //var_dump($_GET);
-    $userName = isset($_POST['user_name']) ? $_POST['user_name'] : '';
-   
-    }
-    return Database::query("SELECT * FROM tb_employ");
-  }
 
-
-static function visibleEmploy(){
-    
-}
 }
 
 

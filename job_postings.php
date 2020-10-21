@@ -3,25 +3,7 @@
 
  <?php $categoryFetchResult  = Database::query("SELECT * FROM tm_categoriesjob"); ?>
 
-<div>
-    <form method="GET">
-           <label for="s">Търси в обяви:</label><br>
-            <input class="search"
-                   type         = "text" 
-                   placeholder  = "Търси ..." 
-                   name         = "s">
-          
-            <select class="search" name="s_selector">
-                <option value="company">Търси по име на фирма</option>
-                <option value="content">Търси по съдържание на обява</option>
-            </select>
-           
-            <input type         = "hidden" 
-                   name         = "job_search_tokken" 
-                   value        = "1">
-            <input class="submit-1" type="submit">
-        </form>
-</div>
+
 <div class="flex">
     
 <div class="wrapper">
@@ -46,17 +28,44 @@
             </a>
         </li>    
     </ul>
-</div>
-<br>
-<br>
 
+<br>
+<br>
+</div>
 <div class="wrapper">
     <p class="cat">Обяви за работа</p>
     <br>
+    <br>
+<form method="GET">
+        <label class="tarsi" for="s"><b>Търси в обяви:</b></label><br>
+            <input class="search"
+                   type         = "text" 
+                   placeholder  = "Търси ..." 
+                   name         = "s">
+          
+            <select class="search" name="s_selector">
+                <option value="company">Търси по име на фирма</option>
+                <option value="content">Търси по съдържание на обява</option>
+            </select>
+           
+            <input type         = "hidden" 
+                   name         = "job_search_tokken" 
+                   value        = "1">
+            <input class="submit-1" type="submit">
+        </form>
+
+<br>
+<br>
+<div>
+  
+    <br>
     
    <?php 
-  $query = listAllJobPost();
-   while($jobPost = Database::fetch($query)) {?>
+  //$query = listAllJobPost();
+   //while($jobPost = Database::fetch($query)) {
+   
+   foreach(listAllJobPost() as $key => $jobPost) {
+   ?>
     
     <div class="job-title" ><b><?php echo $jobPost['title']; ?></b></div>
 
@@ -64,16 +73,16 @@
     
     <div class="priview_content"><?php echo $jobPost['priview_content']; ?></div>
     
-    <div class="content"><?php echo $jobPost['content']; ?></div>
-    
     <br>
     
    <?php } ?>
     <?php Pagination::display(); ?>
     
+  </div>  
 </div>
-    
-</div>
+ </div>  
+   
+
 
 
 <?php include('C:/xampp/htdocs/netit-backend-hr/template/footer.php'); ?>

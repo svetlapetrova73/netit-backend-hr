@@ -59,6 +59,66 @@ class Database {
         return mysqli_fetch_assoc($databaseResultSet);
     }
     
+    static function count($tableName) {
+        
+        $databaseQuery = "SELECT COUNT(*) AS count FROM $tableName";
+        return Database::get($databaseQuery)['count'];
+    }
+    
+    static function countempl($tableName) {
+        
+        $databaseQuery = "SELECT COUNT(user_name) AS count FROM $tableName";
+        return Database::get($databaseQuery)['count'];
+    }
+    
+    static function insert($tableName, $columnCollection) {
+       
+        $queryBuilder = "INSERT INTO $tableName (";
+        foreach ($columnCollection as $key => $value) {
+            $queryBuilder .= $key . ',';
+        }
+        $queryBuilder = substr_replace($queryBuilder, ")", strlen($queryBuilder) - 1);
+        $queryBuilder .= ' VALUES(';
+        
+        foreach ($columnCollection as $key => $value) {
+            $queryBuilder .= '\'' . $value . '\',';
+        }
+        $queryBuilder = substr_replace($queryBuilder, ")", strlen($queryBuilder) - 1);
+        
+        return Database::query($queryBuilder);
+    }
+    
+    static function update($tableName, $columnCollection, $whereCollection ) {
+        
+        $queryBuilder = "UPDATE $tableName SET ";
+        
+        foreach ($columnCollection as $key => $value) {
+            $queryBuilder .= "$key = '$value',";
+        }
+        
+        $queryBuilder  = substr_replace($queryBuilder, " ", strlen($queryBuilder) - 1);
+        $queryBuilder .= " WHERE ";
+        foreach ($whereCollection as $key => $value) {
+            $queryBuilder .= "$key = '$value',";
+        }        
+        
+        $queryBuilder = substr_replace($queryBuilder, " ", strlen($queryBuilder) - 1);
+        return $queryBuilder;
+    }
+    
+    static function delete($tableName, $whereCollection) {
+        
+        $queryBuilder = "DELETE FROM $tableName WHERE ";
+        
+        foreach ($whereCollection as $key => $value) {
+            $queryBuilder .= "$key = '$value',";
+        }                   
+        
+        $queryBuilder = substr_replace($queryBuilder, " ", strlen($queryBuilder) - 1);
+        return $queryBuilder;
+    }
+
+    
 }
 
 

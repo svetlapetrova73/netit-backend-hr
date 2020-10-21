@@ -66,6 +66,8 @@
         <input type         = "hidden"  
                name         = "empl_request_tokken1"
                value        = "1">
+        
+        
         <input class="submit" type="submit">
     </form>
         
@@ -78,27 +80,27 @@
             <input placeholder  = "Име на фирмата" 
                class        = "input"  
                type         = "text"      
-               name         = "company_name">
-        <?php displayFormError('empl_signup', 'company_name'); ?>
+               name         = "company7_name">
+        <?php displayFormError('empl_signup', 'company7_name'); ?>
        
         
             <input placeholder  ="Бранш" 
                class        ="input"  
                type         ="text"      
-               name         ="user_branch">
-        <?php displayFormError('empl_signup', 'user_branch'); ?>
+               name         ="user7_branch">
+        <?php displayFormError('empl_signup', 'user7_branch'); ?>
         
         
-            <textarea name          = "business_activity" 
+            <textarea name          = "business7_activity" 
                       placeholder   = " Кратко описание на дейността на фирмата"
                       class ="textarea7"></textarea>
-         <?php displayFormError('employer_signup', 'business_activity'); ?>
+         <?php displayFormError('employer_signup', 'business7_activity'); ?>
                       
             <input placeholder  = "Парола" 
                class        = "input"  
                type         = "password"  
-               name         = "employer_pass">
-        <?php displayFormError('empl_signup', 'employer_pass'); ?>
+               name         = "employer7_pass">
+        <?php displayFormError('empl_signup', 'employer7_pass'); ?>
         
         
             <input placeholder  = "Повторете паролата" 

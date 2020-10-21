@@ -37,7 +37,7 @@
                class        = "input"
                name         = "category_title" 
                placeholder  = "Добавяне или редактиране на нова категория"
-               value        = "<?php echo getSuperCategory() ?>">
+               value        = "<?php echo getSuperCategory(); ?>">
         <input type         = "submit"
                class        = "submit">
         
@@ -46,5 +46,7 @@
     
     </div>
 </div>
+
+<?php include('C:/xampp/htdocs/netit-backend-hr/template/footer.php'); ?>
 
 

@@ -36,27 +36,39 @@ function getCategoryTokken() {
 
 
 if(isset($_GET['super_action_tokken']) AND $_GET['super_action_tokken'] == 'create') {
-
-    // INSERT NEW DATA INTO THE DATABASE
-    $categoryTitle = $_GET['category_title'];
-    echo 'Създадохте категория: ' . $categoryTitle;
-    Database::query("INSERT INTO tm_categoriesjob(title) VALUES('$categoryTitle')");
+    
+    Database::insert('tm_categoriesjob', array(
+        'title' => $_GET['category_title']
+  ));
+   
+    
+   echo 'Създадохте нова категория!';
+    
 }
 
-
 if(isset($_GET['super_action_tokken']) AND $_GET['super_action_tokken'] == 'edit') {
+    
+     //Database::update('tm_categories', array('title' => $_GET['category_title']), 
+                                     // array('id'    => $_GET['super_category_tokken']));
+    
     // UPDATE EXISTING DATA
-    $categoryTitle  = $_GET['category_title'];
-    $categoryId     = $_GET['super_category_tokken'];
-    Database::query("UPDATE tm_categoriesjob SET title = '$categoryTitle' WHERE id = $categoryId");    
+   $categoryTitle  = $_GET['category_title'];
+   $categoryId     = $_GET['super_category_tokken'];
+   Database::query("UPDATE tm_categoriesjob SET title = '$categoryTitle' WHERE id = $categoryId"); 
+   
+   echo 'Редактирахте категория!';
 }
 
 
 
 
 if(isset($_GET['action']) AND $_GET['action'] == 'delete') {
+    
+    //Database::delete('tm_categoriesjob', array('id' => $_GET['category_id'])); - не работи!!!
     // DELETE EXISTING DATA
     $categoryId     = $_GET['category_id'];
     Database::query("DELETE FROM  tm_categoriesjob WHERE id = $categoryId");
+    
+    echo 'Изтрихте категория!';
 }
 

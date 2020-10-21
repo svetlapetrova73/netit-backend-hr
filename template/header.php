@@ -15,6 +15,9 @@
 <body>
 
 <div id="header" >
+    
+    
+    
     <div class="sticky">
         <?php if(Auth::isNotAutenticated()) { ?> 
             <ul>
@@ -25,7 +28,7 @@
        
         <?php if(Auth::isAutenticated()) { ?>
  
-        
+       
               
         <ul>
                <li class="list-item-1"><a href="signout.php">Изход</a></li>
