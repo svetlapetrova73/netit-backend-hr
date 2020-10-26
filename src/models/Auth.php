@@ -92,7 +92,7 @@ Class Auth {
        
        //employ/setAutenticationFlagToAvailable() - Проверка дали потребителя се е логнал
        static function setAutenticatedUsers($authenticatedCollectionData) {
-           
+            
            $_SESSION['users_data_collection']   = $authenticatedCollectionData['users_data_collection'];
            $_SESSION['users_role_collection']   = $authenticatedCollectionData['users_role_collection'];
            $_SESSION['is_authenticated'] = true;
@@ -103,7 +103,8 @@ Class Auth {
        static function isAutenticated() {
          
            
-    return isset($_SESSION['is_authenticated']) ? $_SESSION['is_authenticated'] : false; 
+    return isset($_SESSION['is_authenticated']) ? $_SESSION['is_authenticated'] : false;
+    
         
        }
 
@@ -145,9 +146,9 @@ Class Auth {
         }
         return false;
      }
-     
+   
     
-
+   
 }
 
 

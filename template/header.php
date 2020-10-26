@@ -6,6 +6,9 @@
 <?php include './src/util/redirect.php';    ?>
 
 
+
+
+
 <html>
     
 <head>
@@ -27,10 +30,11 @@
         <?php } ?>
        
         <?php if(Auth::isAutenticated()) { ?>
- 
-       
-              
-        <ul>
+           
+            
+            
+            <ul>
+               
                <li class="list-item-1"><a href="signout.php">Изход</a></li>
             </ul>
         <?php } ?>

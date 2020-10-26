@@ -5,5 +5,7 @@
 
 
 <?php
+
+
 Auth::signout();
 redirecT('signin');

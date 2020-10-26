@@ -27,11 +27,11 @@
      
     <?php } ?>
      
-   <?php Pagination::display(); ?> 
+   <?php Pagination::display1(); ?> 
    
 </div>
 
 <br>
-<div class="list-item-1"><a  href="super.php">*</a></div>
+
 
 <?php include('C:/xampp/htdocs/netit-backend-hr/template/footer.php'); ?>

@@ -126,7 +126,7 @@
                class        = "submit">
    </form>  
      
-    <a  class="btn" href="employer_jobpost">&#128195 <i>Публикувайте нова обява за работа>></i></a>
+    <a  class="btn" href="employer_jobpost.php">&#128195 <i>Публикувайте нова обява за работа>></i></a>
     
    <?php Pagination::display(); ?> 
     

@@ -24,7 +24,8 @@
         <?php } ?>
        
         <?php if(Auth::isAutenticated()) { ?>
-           
+        
+          
               
         <ul>
                <li class="list-item-1"><a href="signout.php">Изход</a></li>

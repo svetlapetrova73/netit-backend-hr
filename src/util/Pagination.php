@@ -63,12 +63,13 @@ class Pagination {
         $prevPageIndex  = $pageIndex - 1;
         
         if(Pagination::hasPrevPage()) {
-            echo "<a class='pagination' href='?page_index=$prevPageIndex'>Предишна</a>";
+            echo "<a class='pagination' href='?page_index=$prevPageIndex'><<</a>";
         }        
-        echo '<span>' . Pagination::getPageOffset() . ' - ' . Pagination::getTotalCount() . '</span>';
+        
+        echo '<span>'  . ' ... '  . '</span>';
         
         if(Pagination::hasNextPage()) {
-            echo "<a class='pagination' href='?page_index=$nextPageIndex'>Следваща</a>";        
+            echo "<a class='pagination' href='?page_index=$nextPageIndex'>>></a>";        
         }
     }
     

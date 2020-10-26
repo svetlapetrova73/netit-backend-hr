@@ -42,10 +42,11 @@
              <input class="submit" 
                     type="submit"
                     value    = "Публикувай обява за работа">
+             <br>
             
         </form>
         <br>
-        <div class="list-item-1"><a  href="super.php">*</a></div>
+        
     </div>
 </div>
 

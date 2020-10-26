@@ -184,6 +184,13 @@
     margin          : auto;
     margin-bottom   : 8px;
 }
+.wrapper1 {
+    width           : 1000px;
+    margin          : auto;
+    margin-bottom   : 8px;
+    font-size: 24px;
+    line-height: 1.4;
+}
 
 .category-placeholder--category {
     display         : block;
